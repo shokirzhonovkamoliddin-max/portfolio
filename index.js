@@ -1,33 +1,39 @@
-const request = new XMLHttpRequest();
-const api = "https://jsonplaceholder.typicode.com/todos";
-const loading = document.querySelector(".loading");
-const list = document.querySelector(".list");
+const elForm = document.querySelector(".form");
+const elInput = document.querySelector(".input");
+const elCard = document.querySelector(".card");
 
-request.addEventListener("readystatechange", () => {
-  if (request.readyState < 4) {
-    loading.innerHTML = "LOADING ......";
-  }
-  if (request.status === 200 && request.readyState === 4) {
-    const data = JSON.parse(request.responseText);
-    showData(data);
-    loading.innerHTML = "";
-  }
+elForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const inputName = elInput.value.trim();
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${inputName}&units=metric&appid=c67e3943b1537eb384b2ac2193719538`;
+
+    getWeather(api);
 });
 
-request.open("GET", api);
-request.send();
+const getWeather = (url) => {
+    const request = new XMLHttpRequest();
 
-function showData(data) {
-  list.innerHTML = "";
-  if (data && data.length > 0) {
-    data.forEach((element) => {
-      list.innerHTML += `<div class="item">
-          <p> id : ${element.id} </p>
-          <h3>title : ${element.title} </h3>
-          <p> completed : ${element.completed} </p>
-        </div>`;
+    request.addEventListener("readystatechange", () => {
+        if (request.status === 200 && request.readyState === 4) {
+            const data = JSON.parse(request.responseText);
+            showWeather(data);
+        }
     });
-  } else {
-    console.log("data yo'q");
-  }
+
+    request.open("GET", url);
+    request.send();
+};
+
+function showWeather(weather) {
+    console.log(weather);
+
+    const { name } = weather;
+    const degree = weather.main.temp;
+
+    elCard.innerHTML = `
+        <h2>Shahar : ${name}</h2>
+        <p class="degree">Degree: ${Math.round(degree)} C</p>
+    `;
 }
+

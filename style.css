@@ -1,46 +1,67 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-    text-align: center;
-    margin: 20px 0;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 50px;
+  background-image: url('weather.webp');
+  background-size: cover;
+  overflow: hidden;
 }
 
 .list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    text-align: center;
+  background: rgba(244, 255, 175, 0.578);
+  padding: 30px;
+  border-radius: 20px;
+  width: 620px;
 }
 
-.item {
-    width: 300px;
-    min-height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-   background-color: rgba(255, 72, 6, 0.539);
-   transition: all 0.3s ease;
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  background: #647d08;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #476504;
+}
+
+.card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #545704;
+}
+
+.degree {
+  font-size: 24px;
+  font-weight: 800px;
+  color: #424605;
 }
 
 
-.item:hover {
-    background-color: rgba(190, 57, 9, 0.689);
-     transform: scale(1.05);
-}
-
-
-.loading {
-    text-align: center;
-    font-weight: bold;
-}
